@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+body {
+font-family: Arial, sans-serif;
+line-height: 1.7;
+background-color: #f4f1ea;
+color: #333;
+}
+
+/* Header */
+header {
+background-color: #173f5f;
+color: white;
+text-align: center;
+padding: 45px 20px;
+}
+
+header h1 {
+font-family: Georgia, serif;
+font-size: 44px;
+margin-bottom: 10px;
+}
+
+header p {
+font-size: 20px;
+}
+
+/* Image section */
+.hero {
+text-align: center;
+padding: 35px 20px;
+background-color: #dceaf2;
+}
+
+.hero img {
+width: 280px;
+max-width: 90%;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.hero p {
+margin-top: 15px;
+font-style: italic;
+}
+
+/* Sections */
+section {
+padding: 45px 20px;
+}
+
+h2 {
+font-family: Georgia, serif;
+font-size: 30px;
+text-align: center;
+margin-bottom: 25px;
+color: #173f5f;
+}
+
+/* Biography */
+.biography {
+background-color: white;
+}
+
+.biography p {
+max-width: 900px;
+margin: 0 auto 18px;
+}
+
+/* Achievements */
+.achievements {
+background-color: #f5dfb3;
+}
+
+.achievements ol {
+max-width: 800px;
+margin: auto;
+padding-left: 30px;
+}
+
+.achievements li {
+margin-bottom: 15px;
+font-size: 17px;
+}
+
+/* Quote */
+.quote {
+background-color: #173f5f;
+color: white;
+text-align: center;
+}
+
+.quote blockquote {
+max-width: 800px;
+margin: auto;
+font-family: Georgia, serif;
+font-size: 26px;
+font-style: italic;
+}
+
+.quote p {
+margin-top: 15px;
+font-size: 18px;
+}
+
+/* Footer */
+footer {
+background-color: #111;
+color: white;
+text-align: center;
+padding: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+
+```
+header h1 {
+    font-size: 32px;
+}
+
+header p {
+    font-size: 17px;
+}
+
+.hero img {
+    width: 220px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+.quote blockquote {
+    font-size: 21px;
+}
+```
+
+}
