@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-box,
+.dashboard {
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+    font-family: Georgia, serif;
+    color: #243b53;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #66788a;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 18px;
+    border: 2px solid #d9e2ec;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #4a90e2;
+}
+
+.password-info {
+    font-size: 13px;
+    color: #777;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #4a90e2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #357abd;
+}
+
+.link-text {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#registerMessage,
+#loginMessage {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.success {
+    color: #28a745;
+}
+
+.error {
+    color: #dc3545;
+}
+
+.dashboard {
+    text-align: center;
+}
+
+.dashboard h1 {
+    margin-bottom: 15px;
+}
+
+#welcomeMessage {
+    color: #66788a;
+    margin-bottom: 25px;
+}
+
+.dashboard-card {
+    background: #eef6ff;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.dashboard-card h2 {
+    color: #243b53;
+    margin-bottom: 10px;
+}
+
+.dashboard-card p {
+    color: #555;
+}
+
+#logoutButton {
+    background: #dc3545;
+}
+
+#logoutButton:hover {
+    background: #b52a37;
+}
+
+@media (max-width: 500px) {
+
+    .form-box,
+    .dashboard {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
