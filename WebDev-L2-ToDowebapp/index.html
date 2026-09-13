@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Task Management System</h1>
+    <p>Organize your tasks, get things done!</p>
+
+    <div class="task-input">
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <button id="addBtn">Add Task</button>
+    </div>
+
+    <div class="task-lists">
+
+        <!-- Pending Tasks -->
+        <div class="task-box">
+            <h2>Pending Tasks <span id="pendingCount">(0)</span></h2>
+            <ul id="pendingList"></ul>
+        </div>
+
+        <!-- Completed Tasks -->
+        <div class="task-box">
+            <h2>Completed Tasks <span id="completedCount">(0)</span></h2>
+            <ul id="completedList"></ul>
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
