@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eef3f8;
+    padding: 30px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #24496b;
+    margin-bottom: 8px;
+}
+
+.container > p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.task-input input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.task-input button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #2589e8;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.task-input button:hover {
+    background: #176dbd;
+}
+
+.task-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.task-box {
+    background: #f8fbff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e0e7ef;
+}
+
+.task-box h2 {
+    margin-bottom: 15px;
+    color: #263d52;
+}
+
+#pendingCount {
+    color: #2589e8;
+}
+
+#completedCount {
+    color: #20a464;
+}
+
+ul {
+    list-style: none;
+}
+
+.task {
+    background: white;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.task-title {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.task-time {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.task button {
+    border: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+    color: white;
+}
+
+.complete-btn {
+    background: #20a464;
+}
+
+.edit-btn {
+    background: #2589e8;
+}
+
+.delete-btn {
+    background: #e53935;
+}
+
+.undo-btn {
+    background: #f0a000;
+}
+
+.task button:hover {
+    opacity: 0.85;
+}
+
+@media (max-width: 700px) {
+    .task-lists {
+        grid-template-columns: 1fr;
+    }
+
+    .task-input {
+        flex-direction: column;
+    }
+}
