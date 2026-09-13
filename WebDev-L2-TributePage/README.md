@@ -19,11 +19,13 @@ This project is a simple and responsive tribute page dedicated to Sir C. V. Rama
 
 - HTML5
 - CSS3
+- Java script
 
 ## 📒 Project Files
 
-- index.html – Tribute page structure
-- tribute.css – Tribute page design and styling
+- index.html– Tribute page structure
+- style.css – Tribute page design and styling
+- script.js – Adds a small interactive message and page-load functionality
 - Sir_CV_Raman (1).JPG – Profile image
 
 ## 🚀 Outcome
