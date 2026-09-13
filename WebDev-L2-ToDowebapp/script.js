@@ -1,93 +1,115 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-// Add Task
-document.getElementById("addBtn").addEventListener("click", addTask);
+const taskInput = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
 
-document.getElementById("taskInput").addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
+const pendingTasks = document.getElementById("pendingTasks");
+const completedTasks = document.getElementById("completedTasks");
+
+const pendingCount = document.getElementById("pendingCount");
+const completedCount = document.getElementById("completedCount");
+
+const pendingEmpty = document.getElementById("pendingEmpty");
+const completedEmpty = document.getElementById("completedEmpty");
+
+// Add Task
+addBtn.addEventListener("click", addTask);
+
+taskInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
         addTask();
     }
 });
 
 function addTask() {
-    const input = document.getElementById("taskInput");
-    const text = input.value.trim();
 
-    if (text === "") {
+    const taskText = taskInput.value.trim();
+
+    if (taskText === "") {
         alert("Please enter a task.");
         return;
     }
 
-    const task = {
+    const newTask = {
         id: Date.now(),
-        title: text,
+        text: taskText,
         completed: false,
         time: new Date().toLocaleString()
     };
 
-    tasks.push(task);
+    tasks.push(newTask);
 
     saveTasks();
+
+    taskInput.value = "";
+
     displayTasks();
-
-    input.value = "";
 }
-
 
 // Display Tasks
 function displayTasks() {
 
-    const pendingList = document.getElementById("pendingList");
-    const completedList = document.getElementById("completedList");
+    pendingTasks.innerHTML = "";
+    completedTasks.innerHTML = "";
 
-    pendingList.innerHTML = "";
-    completedList.innerHTML = "";
+    const pending = tasks.filter(task => !task.completed);
+    const completed = tasks.filter(task => task.completed);
 
-    let pending = 0;
-    let completed = 0;
+    pendingCount.textContent = pending.length;
+    completedCount.textContent = completed.length;
 
-    tasks.forEach(task => {
+    pendingEmpty.style.display =
+        pending.length === 0 ? "block" : "none";
 
-        const li = document.createElement("li");
-        li.className = "task";
+    completedEmpty.style.display =
+        completed.length === 0 ? "block" : "none";
 
-        li.innerHTML = `
-            <div class="task-title">${task.title}</div>
+    pending.forEach(task => {
+        pendingTasks.appendChild(createTaskElement(task));
+    });
 
-            <div class="task-time">
-                📅 ${task.time}
-            </div>
+    completed.forEach(task => {
+        completedTasks.appendChild(createTaskElement(task));
+    });
+}
 
-            <button class="complete-btn" onclick="completeTask(${task.id})">
-                ✓ Complete
-            </button>
+// Create Task
+function createTaskElement(task) {
+
+    const div = document.createElement("div");
+    div.className = "task";
+
+    div.innerHTML = `
+        <div class="task-info">
+            <div class="task-name">${escapeHTML(task.text)}</div>
+            <div class="task-time">Added: ${task.time}</div>
+        </div>
+
+        <div class="task-buttons">
+
+            ${
+                task.completed
+                ? `<button class="undo-btn" onclick="undoTask(${task.id})">
+                    ↩ Undo
+                   </button>`
+                : `<button class="complete-btn" onclick="completeTask(${task.id})">
+                    ✓ Complete
+                   </button>`
+            }
 
             <button class="edit-btn" onclick="editTask(${task.id})">
-                ✎ Edit
+                ✏ Edit
             </button>
 
             <button class="delete-btn" onclick="deleteTask(${task.id})">
                 🗑 Delete
             </button>
 
-            <button class="undo-btn" onclick="undoTask(${task.id})">
-                ↶ Undo
-            </button>
-        `;
+        </div>
+    `;
 
-        if (task.completed) {
-            completedList.appendChild(li);
-            completed++;
-        } else {
-            pendingList.appendChild(li);
-            pending++;
-        }
-    });
-
-    document.getElementById("pendingCount").textContent = `(${pending})`;
-    document.getElementById("completedCount").textContent = `(${completed})`;
+    return div;
 }
-
 
 // Complete Task
 function completeTask(id) {
@@ -101,8 +123,7 @@ function completeTask(id) {
     }
 }
 
-
-// Undo / Move back to Pending
+// Undo Task
 function undoTask(id) {
 
     const task = tasks.find(task => task.id === id);
@@ -114,7 +135,6 @@ function undoTask(id) {
     }
 }
 
-
 // Edit Task
 function editTask(id) {
 
@@ -122,37 +142,52 @@ function editTask(id) {
 
     if (!task) return;
 
-    const newTitle = prompt("Edit your task:", task.title);
+    const newText = prompt("Edit your task:", task.text);
 
-    if (newTitle !== null && newTitle.trim() !== "") {
-        task.title = newTitle.trim();
-        task.time = new Date().toLocaleString();
-
-        saveTasks();
-        displayTasks();
+    if (newText === null) {
+        return;
     }
-}
 
+    if (newText.trim() === "") {
+        alert("Task cannot be empty.");
+        return;
+    }
+
+    task.text = newText.trim();
+
+    saveTasks();
+    displayTasks();
+}
 
 // Delete Task
 function deleteTask(id) {
 
     const confirmDelete = confirm("Are you sure you want to delete this task?");
 
-    if (confirmDelete) {
-        tasks = tasks.filter(task => task.id !== id);
-
-        saveTasks();
-        displayTasks();
+    if (!confirmDelete) {
+        return;
     }
+
+    tasks = tasks.filter(task => task.id !== id);
+
+    saveTasks();
+    displayTasks();
 }
 
-
-// Save Tasks
+// Save to Local Storage
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+// Prevent HTML injection
+function escapeHTML(text) {
 
-// Load Tasks when page opens
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+// Initial display
 displayTasks();
