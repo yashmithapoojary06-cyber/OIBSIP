@@ -22,8 +22,6 @@ This project is a simple Login Authentication System developed to provide secure
 
 ## 📒 Project Files
 - "index.html" – Login page of the authentication system
-- "register.html" – User registration page
-- "dashboard.html" – Protected dashboard page
 - "style.css" – Styling and responsive design
 - "script.js" – Authentication, validation, and session functionality
 
