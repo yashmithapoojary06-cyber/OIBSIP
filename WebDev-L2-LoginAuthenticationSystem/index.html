@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureGate - Login Authentication</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        
+        <section class="welcome-section">
+            <div class="logo">SG</div>
+
+            <h1>SecureGate</h1>
+
+            <p class="tagline">
+                Simple and secure account authentication
+            </p>
+
+            <div class="security-box">
+                <span>🔐</span>
+                <div>
+                    <h3>Secure Access</h3>
+                    <p>Your account is protected with password hashing.</p>
+                </div>
+            </div>
+
+            <div class="security-box">
+                <span>🛡️</span>
+                <div>
+                    <h3>Protected Dashboard</h3>
+                    <p>Only authenticated users can access your dashboard.</p>
+                </div>
+            </div>
+        </section>
+
+
+        
+        <section class="auth-section">
+
+            <div class="auth-card">
+
+                <div class="tabs">
+                    <button id="registerTab" class="tab active">
+                        Register
+                    </button>
+
+                    <button id="loginTab" class="tab">
+                        Login
+                    </button>
+                </div>
+
+
+                
+                <form id="registerForm">
+
+                    <h2>Create your account</h2>
+                    <p class="form-text">
+                        Register to access your secure account.
+                    </p>
+
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        required
+                    >
+
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email"
+                        required
+                    >
+
+                    <label>Password</label>
+                    <div class="password-box">
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Enter password"
+                            required
+                        >
+                        <button type="button" id="showRegisterPassword">
+                            Show
+                        </button>
+                    </div>
+
+                    <div class="requirements">
+                        <p id="lengthCheck">○ At least 8 characters</p>
+                        <p id="numberCheck">○ Contains at least 1 number</p>
+                    </div>
+
+                    <button class="main-btn" type="submit">
+                        Create Account
+                    </button>
+
+                    <p id="registerMessage" class="message"></p>
+
+                </form>
+
+
+                
+                <form id="loginForm" class="hidden">
+
+                    <h2>Welcome back</h2>
+                    <p class="form-text">
+                        Login to continue to your account.
+                    </p>
+
+                    <label>Username or Email</label>
+                    <input
+                        type="text"
+                        id="loginUser"
+                        placeholder="Username or email"
+                        required
+                    >
+
+                    <label>Password</label>
+                    <div class="password-box">
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter password"
+                            required
+                        >
+
+                        <button type="button" id="showLoginPassword">
+                            Show
+                        </button>
+                    </div>
+
+                    <button class="main-btn" type="submit">
+                        Login
+                    </button>
+
+                    <p id="loginMessage" class="message"></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+   
+    <div id="dashboard" class="dashboard hidden">
+
+        <header class="dashboard-header">
+
+            <div class="brand">
+                <div class="small-logo">SG</div>
+                <strong>SecureGate</strong>
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">
+                Logout
+            </button>
+
+        </header>
+
+
+        <main class="dashboard-content">
+
+            <div class="dashboard-intro">
+                <span class="badge">AUTHENTICATED</span>
+
+                <h1>
+                    Hello, <span id="dashboardUser"></span> 👋
+                </h1>
+
+                <p>
+                    You have successfully logged into your protected dashboard.
+                </p>
+            </div>
+
+
+            <div class="info-grid">
+
+                <div class="info-card">
+                    <div class="icon">✓</div>
+                    <h3>Authentication</h3>
+                    <p>
+                        Your current login session is active.
+                    </p>
+                    <span class="status">ACTIVE</span>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon">🔒</div>
+                    <h3>Account Security</h3>
+                    <p>
+                        Your password is stored using SHA-256 hashing.
+                    </p>
+                    <span class="status">PROTECTED</span>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon">⚡</div>
+                    <h3>Access Control</h3>
+                    <p>
+                        Dashboard access is available only after login.
+                    </p>
+                    <span class="status">VERIFIED</span>
+                </div>
+
+            </div>
+
+
+            <div class="account-card">
+
+                <p class="section-title">ACCOUNT DETAILS</p>
+
+                <div class="detail">
+                    <span>Username</span>
+                    <strong id="accountUsername"></strong>
+                </div>
+
+                <div class="detail">
+                    <span>Email</span>
+                    <strong id="accountEmail"></strong>
+                </div>
+
+                <div class="detail">
+                    <span>Session</span>
+                    <strong>Active</strong>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
